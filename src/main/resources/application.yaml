@@ -1,0 +1,3 @@
+logging:
+  level:
+    org.infinispan.topology.ClusterTopologyManagerImpl: TRACE

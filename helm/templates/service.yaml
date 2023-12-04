@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "distr-cache.fullname" . }}
+  labels:
+    {{- include "distr-cache.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http
+    - port: 7800
+      targetPort: infinispan-tcp
+      name: infinispan-tcp
+  selector:
+    {{- include "distr-cache.selectorLabels" . | nindent 4 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "distr-cache.fullname" . }}-ping
+  labels:
+    {{- include "distr-cache.labels" . | nindent 4 }}
+spec:
+  clusterIP: None
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http
+    - port: 7800
+      targetPort: infinispan-tcp
+      name: infinispan-tcp
+  selector:
+    {{- include "distr-cache.selectorLabels" . | nindent 4 }}
