@@ -7,3 +7,8 @@ discover the Infinispan nodes in a K8S cluster.
 
 * `mvn compile jib:build`
 * `helm install distr-cache ./helm`
+* Port-forward the service using e.g. kubectl
+* `curl -X POST localhost:8080/entries`
+* `curl localhost:8080/entries`
+
+
