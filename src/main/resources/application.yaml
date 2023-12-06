@@ -1,3 +1,32 @@
 logging:
   level:
     org.infinispan.topology.ClusterTopologyManagerImpl: TRACE
+
+
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+  data:
+  datasource:
+    url: jdbc:postgresql://${DATABASE_SERVICE}:5432/my-db
+    username: db-user
+    password: password!§$%&/()AABBZZHH
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+infinispan:
+  client:
+    hotrod:
+      marshaller: org.infinispan.commons.marshall.ProtoStreamMarshaller
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+server:
+  shutdown: graceful

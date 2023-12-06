@@ -12,3 +12,10 @@ discover the Infinispan nodes in a K8S cluster.
 * `curl localhost:8080/entries`
 
 
+## Install Postgres
+Postgres is used to persist the contents of the Infinispan cache.
+
+It can be installed by using the following command
+```sh
+helm install -f helm/postgres-values.yaml postgres oci://registry-1.docker.io/bitnamicharts/postgresql #
+```

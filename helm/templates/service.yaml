@@ -25,6 +25,10 @@ metadata:
     {{- include "distr-cache.labels" . | nindent 4 }}
 spec:
   clusterIP: None
+  # Explicitly publish not-ready addresses.
+  # Infinispan has its own failure detection and the pod will be "ready"
+  # only when Spring Boot is fully up-and-running.
+  publishNotReadyAddresses: true
   ports:
     - port: 8080
       targetPort: http
