@@ -2,13 +2,13 @@ package com.example.distrcache.model
 
 import org.infinispan.protostream.annotations.ProtoEnumValue
 
-enum class JobStatusEnum {
+enum class JobStatusEnum(val finalStatus: Boolean) {
     @ProtoEnumValue(number = 0)
-    SCHEDULED,
+    SCHEDULED(false),
     @ProtoEnumValue(number = 1)
-    RUNNING,
+    RUNNING(false),
     @ProtoEnumValue(number = 2)
-    FAILED,
+    FAILED(true),
     @ProtoEnumValue(number = 3)
-    FINISHED
+    FINISHED(true)
 }

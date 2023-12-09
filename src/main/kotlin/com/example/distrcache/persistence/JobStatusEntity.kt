@@ -11,6 +11,7 @@ import java.time.ZonedDateTime
 data class JobStatusEntity(
     @Id
     val id: String? = null,
+
     @Enumerated(EnumType.STRING)
     var jobStatus: JobStatusEnum? = null,
 

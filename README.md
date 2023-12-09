@@ -19,3 +19,20 @@ It can be installed by using the following command
 ```sh
 helm install -f helm/postgres-values.yaml postgres oci://registry-1.docker.io/bitnamicharts/postgresql #
 ```
+
+## Subscribing to cache updates via server-sent events
+
+### Receive all events until the client closes the connection
+```sh
+curl -N "localhost:8080/entries-stream"
+```
+
+### Receive events for a certain job
+```sh
+curl -N "localhost:8080/entries-stream?jobId=one
+```
+
+### Receive events for a certain job and close the stream when the Job succeeded or failed
+```sh
+curl -N "localhost:8080/entries-stream?jobId=one&completeAfterFinalJobStatus=true"
+```

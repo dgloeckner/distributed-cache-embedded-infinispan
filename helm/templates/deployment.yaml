@@ -63,6 +63,8 @@ spec:
               port: 8080
             initialDelaySeconds: 120
             periodSeconds: 3
+            # Very high threshold just for debugging ;)
+            failureThreshold: 500
           readinessProbe:
             httpGet:
               path: /actuator/health/readiness
